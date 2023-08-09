@@ -23,8 +23,8 @@ if($_POST['METHOD']=='POST'){
     $nombre=$_POST['nombre'];
     $lanzamiento=$_POST['lanzamiento'];
     $desarrollador=$_POST['desarrollador'];
-    $query="insert into frameworks(nombre, lanzamiento, desarrollador) values ('$nombre', '$lanzamiento', '$desarrollador')";
-    $queryAutoIncrement="select MAX(id) as id from frameworks";
+    $query="insert into tablas_framework(nombre, lanzamiento, desarrollador) values ('$nombre', '$lanzamiento', '$desarrollador')";
+    $queryAutoIncrement="select MAX(id) as id from tablas_framework";
     $resultado=metodoPost($query, $queryAutoIncrement);
     echo json_encode($resultado);
     header("HTTP/1.1 200 OK");
@@ -37,7 +37,7 @@ if($_POST['METHOD']=='PUT'){
     $nombre=$_POST['nombre'];
     $lanzamiento=$_POST['lanzamiento'];
     $desarrollador=$_POST['desarrollador'];
-    $query="UPDATE frameworks SET nombre='$nombre', lanzamiento='$lanzamiento', desarrollador='$desarrollador' WHERE id='$id'";
+    $query="UPDATE tablas_framework SET nombre='$nombre', lanzamiento='$lanzamiento', desarrollador='$desarrollador' WHERE id='$id'";
     $resultado=metodoPut($query);
     echo json_encode($resultado);
     header("HTTP/1.1 200 OK");
@@ -47,7 +47,7 @@ if($_POST['METHOD']=='PUT'){
 if($_POST['METHOD']=='DELETE'){
     unset($_POST['METHOD']);
     $id=$_GET['id'];
-    $query="DELETE FROM frameworks WHERE id='$id'";
+    $query="DELETE FROM tablas_framework WHERE id='$id'";
     $resultado=metodoDelete($query);
     echo json_encode($resultado);
     header("HTTP/1.1 200 OK");
